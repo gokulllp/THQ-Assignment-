@@ -1,0 +1,33 @@
+Task 3: Troubleshooting Authentication Error (LinkedIn – n8n)
+
+Problem:
+Workflow fails with Authentication Error when posting to LinkedIn.
+
+Three Common Causes:
+
+Expired Access Token
+LinkedIn tokens often expire after a set duration or require manual refresh.
+
+Incorrect OAuth Scopes
+Required scopes like r_liteprofile, w_member_social may be missing.
+
+Revoked Credentials
+LinkedIn account may have revoked access, or credentials may be misconfigured in n8n.
+
+How to Troubleshoot in n8n:
+
+Check the execution logs in n8n under “Failed” runs.
+Inspect the HTTP Response from LinkedIn (e.g., 401 Unauthorized).
+
+Go to n8n → Credentials → LinkedIn:
+
+Re-authenticate or re-create the LinkedIn OAuth credentials.
+
+Prevention Measures:
+
+Set Up Token Refresh Logic: Use n8n’s built-in OAuth 2.0 refresh support.
+
+Monitor API Failures: Use IF + Slack Alert nodes to notify if an error occurs.
+
+Keep Credentials Updated: 
+Periodically validate tokens in the credentials panel.

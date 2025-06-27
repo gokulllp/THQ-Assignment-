@@ -1,0 +1,53 @@
+Task 1: Automated FAQ Agent (Lyzr.ai Focus)
+
+Problem Overview:
+
+LearnFlow receives repetitive questions (course schedules, syllabus, enrollment) via chat. They want an AI agent to handle this via Lyzr.ai.
+
+Design & Configuration Plan
+
+Use Lyzr’s Knowledge Base Module:
+
+Upload structured FAQ data in JSON or CSV (e.g., question-answer format).
+
+Example:
+
+{
+  "questions": ["What is the syllabus for the Python course?"],
+  "answers": ["The syllabus includes variables, loops, functions, and web development basics."]
+}
+
+Intent Recognition (NLP Layer):
+
+Enable intent classification to detect the nature of the query (e.g., “Schedule Inquiry”, “Enrollment Help”).
+Map common phrases to intents using Lyzr's built-in NLU training interface.
+
+Conversational Flow (Dialogue Management):
+
+Use Lyzr Flow Designer to configure context-aware responses.
+
+Example:
+
+User: “Can I join next month?”
+Bot: “Yes! The next batch starts on July 15th. Would you like to register?”
+
+Training the Agent:
+
+Provide:
+
+Manually curated FAQs.
+Historical chat transcripts (if available).
+
+Embed documents (e.g., course PDFs) for retrieval-based answers.
+
+Use Lyzr's model tuning to fine-tune confidence thresholds.
+
+Integration with Website Chat Widget:
+
+Embed Lyzr’s JavaScript SDK snippet into the website's HTML.
+
+Connect the agent to the widget using the agent ID and config from Lyzr's dashboard.
+
+Optional: 
+
+Style the widget using CSS and attach chat logs to analytics dashboards for performance reviews.

@@ -1,0 +1,61 @@
+Task 2: Content Summarization & Distribution (n8n Focus)
+
+Objective:
+After LearnFlow publishes a blog:
+
+Auto-generate a 200-word summary
+Post to LinkedIn
+Notify the marketing team via Slack
+
+n8n Workflow – Step-by-Step
+Step 1: Trigger
+
+Node: Webhook
+Description: Triggered when a new blog post is published (connected via CMS or webhook URL).
+
+Step 2: Fetch Full Article
+
+Node: HTTP Request
+Config: GET method to fetch the full article content from LearnFlow’s CMS or website.
+
+Step 3: Summarize Article
+
+Node: LLM (OpenAI or Lyzr Plugin)
+Input: Full blog content
+Prompt:
+Summarize the following article in less than 200 words:
+[{{blogContent}}]
+Output: Clean summary
+
+Step 4: Post to LinkedIn
+
+Node: LinkedIn
+Action: Post a company update
+Content:
+{{summary}}\n\nRead more: {{articleURL}}
+
+Step 5: Notify on Slack
+
+Node: Slack
+Action: Send message
+Channel: #marketing
+Content:
+
+New Blog Summary:
+
+"{{summary}}"
+{{articleURL}}
+
+Data & API Management
+Use Set and Function nodes to clean and map data.
+
+Store API keys (LinkedIn/Slack) in n8n credentials manager.
+
+Apply conditional checks (e.g., summary word count < 200).
+
+Optional Flow Diagram (text-based)
+
+[Webhook] → [HTTP Request] → [LLM] → 
+[Linkedin Post]
+        ↓
+[Slack Notification]
